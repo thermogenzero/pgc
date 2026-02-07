@@ -1,0 +1,70 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//
+// Temperature field for fluid region.
+// Hot fluid inlet: 200 C (473.15 K) for BiTe scenario.
+// Change to 673.15 K (400 C) for high-temp scenario.
+
+dimensions      [0 0 0 1 0 0 0];
+
+internalField   uniform 473.15;
+
+boundaryField
+{
+    inlet
+    {
+        type            fixedValue;
+        value           uniform 473.15;   // 200 C
+    }
+
+    outlet
+    {
+        type            zeroGradient;
+    }
+
+    tegFace
+    {
+        // Prescribed heat flux representing TEG thermal load.
+        // Q = 122 W per TEG over 40x40mm face = 76,250 W/m^2
+        // Alternatively, use fixedValue for cold-side temp.
+        type            fixedGradient;
+        gradient        uniform -76250;    // negative = heat leaving fluid
+    }
+
+    topWall
+    {
+        type            zeroGradient;      // adiabatic
+    }
+
+    fluid_to_leftFin
+    {
+        // Coupled to solid region (handled by chtMultiRegionFoam)
+        type            compressible::turbulentTemperatureCoupledBaffleMixed;
+        Tnbr            T;
+        kappaMethod     fluidThermo;
+        value           $internalField;
+    }
+
+    fluid_to_rightFin
+    {
+        type            compressible::turbulentTemperatureCoupledBaffleMixed;
+        Tnbr            T;
+        kappaMethod     fluidThermo;
+        value           $internalField;
+    }
+}
+
+// ************************************************************************* //

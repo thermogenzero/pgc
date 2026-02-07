@@ -1,0 +1,50 @@
+/**
+ * simulate.mos -- OpenModelica simulation script for the TEG Plant model.
+ *
+ * Usage:
+ *   omc simulate.mos
+ *
+ * This runs the TegPlant.System model for 1 year (31,536,000 s) and
+ * produces result files (TegPlant.System_res.mat) that can be viewed
+ * in OMEdit or plotted with OMPlot / Python.
+ */
+
+// Load the model
+loadFile("TegPlant.mo");
+getErrorString();
+
+// Check model
+checkModel(TegPlant.System);
+getErrorString();
+
+// -----------------------------------------------------------------------
+// Scenario 1: Standard 10 kW BiTe system with ground loop
+// -----------------------------------------------------------------------
+simulate(
+    TegPlant.System,
+    startTime = 0,
+    stopTime = 31536000,     // 1 year in seconds (365 * 86400)
+    numberOfIntervals = 8760, // hourly output (365 * 24)
+    tolerance = 1e-6,
+    method = "dassl",
+    outputFormat = "mat",
+    fileNamePrefix = "BiTe_10kW_groundloop",
+    simflags = "-lv LOG_SUCCESS"
+);
+getErrorString();
+
+// -----------------------------------------------------------------------
+// Quick plots (if running in OMEdit, these show automatically)
+// -----------------------------------------------------------------------
+
+// To plot from command line, use OMPlot:
+//   OMPlot BiTe_10kW_groundloop_res.mat
+//
+// Key variables to plot:
+//   tegArray.P_electrical     -- TEG electrical output (W)
+//   tegArray.T_hot            -- TEG hot-side temperature (K)
+//   tegArray.T_cold           -- TEG cold-side temperature (K)
+//   groundLoop.T_soil         -- Ground temperature (K) -- shows thermal drift
+//   hotPump.P_shaft           -- Pump power (W)
+//   P_net                     -- Net system output (W)
+//   system_efficiency         -- Fuel-to-net-electric efficiency

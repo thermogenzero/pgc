@@ -1,0 +1,40 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//
+// Fluid: 50/50 water-ethylene glycol at ~195 C (bulk average)
+// These are approximate values for the chtMultiRegionFoam thermoFluid model.
+// For more accurate results, use the thermophysicalProperties dict with
+// polynomial fits.
+//
+// Solid: C110 Copper
+
+// The actual fluid/solid properties are set in thermophysicalProperties
+// files in each region subdirectory (created by splitMeshRegions).
+// This file is kept for reference.
+
+// Fluid properties at ~195 C (hot-side bulk average)
+//   rho   = 1010 kg/m^3
+//   Cp    = 3400 J/kg-K
+//   mu    = 0.0003 Pa-s
+//   k     = 0.40 W/m-K
+//   Pr    = 2.55
+
+// Copper solid properties
+//   rho   = 8960 kg/m^3
+//   Cp    = 385 J/kg-K
+//   k     = 385 W/m-K
+
+// ************************************************************************* //

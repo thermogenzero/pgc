@@ -1,0 +1,63 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//
+// Velocity field for fluid region.
+// Flow direction: +Z (through the channel).
+// Inlet velocity ~1.5 m/s based on HX spec Section 7.1.
+//
+// From thermal model:
+//   Per-TEG flow at design point through 9 channels:
+//   channel_velocity ~1-2 m/s (Reynolds ~8400, turbulent)
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 1.5);
+
+boundaryField
+{
+    inlet
+    {
+        type            fixedValue;
+        value           uniform (0 0 1.5);   // 1.5 m/s in +Z
+    }
+
+    outlet
+    {
+        type            zeroGradient;
+    }
+
+    tegFace
+    {
+        type            noSlip;
+    }
+
+    topWall
+    {
+        type            noSlip;
+    }
+
+    fluid_to_leftFin
+    {
+        type            noSlip;
+    }
+
+    fluid_to_rightFin
+    {
+        type            noSlip;
+    }
+}
+
+// ************************************************************************* //

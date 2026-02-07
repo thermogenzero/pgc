@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+venv/
+.venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Matplotlib output
+*.png
+!bench/*.png
+
+# OpenFOAM build artifacts
+modeling/openfoam/hx_cell/[1-9]*
+modeling/openfoam/hx_cell/postProcessing/
+modeling/openfoam/hx_cell/processor*/
+modeling/openfoam/hx_cell/constant/polyMesh/[0-9]*
+modeling/openfoam/hx_cell/log.*
+*.foam
+
+# OpenModelica artifacts
+modeling/openmodelica/*.mat
+modeling/openmodelica/*.log
+modeling/openmodelica/*_res.*
+modeling/openmodelica/*_init.xml
+modeling/openmodelica/*_info.json
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

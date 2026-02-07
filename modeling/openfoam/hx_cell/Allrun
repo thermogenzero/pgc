@@ -1,0 +1,53 @@
+#!/bin/bash
+#
+# Allrun -- Build mesh and run chtMultiRegionFoam for the single HX cell case.
+#
+# Prerequisites: OpenFOAM v2312+ sourced in environment.
+#
+# Steps:
+#   1. blockMesh          -- generate structured hex mesh
+#   2. splitMeshRegions   -- separate fluid and solid zones
+#   3. Set region-specific thermophysical properties
+#   4. chtMultiRegionFoam -- conjugate heat transfer solve
+#
+
+cd "${0%/*}" || exit 1
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions
+
+echo "========================================"
+echo "  HX Cell CHT Simulation"
+echo "  9-channel copper fin + TEG boundary"
+echo "========================================"
+
+# Clean any previous results
+rm -rf processor* log.* postProcessing
+
+echo ""
+echo "--- Step 1: blockMesh ---"
+runApplication blockMesh
+
+echo ""
+echo "--- Step 2: splitMeshRegions ---"
+# Split into fluid and solid based on cellZones defined in blockMeshDict
+runApplication splitMeshRegions -cellZones -overwrite
+
+echo ""
+echo "--- Step 3: Verify regions ---"
+ls -d constant/*/polyMesh 2>/dev/null && echo "Regions created successfully" || {
+    echo "WARNING: splitMeshRegions may not have created separate region dirs."
+    echo "         This simplified case runs as a single region with"
+    echo "         chtMultiRegionFoam treating boundary coupling."
+    echo "         For full multi-region, import CAD geometry via snappyHexMesh."
+}
+
+echo ""
+echo "--- Step 4: chtMultiRegionFoam ---"
+runApplication chtMultiRegionFoam
+
+echo ""
+echo "========================================"
+echo "  Done. Post-process with:"
+echo "    paraFoam"
+echo "  or"
+echo "    postProcess -func 'patchAverage(name=tegFace, T)'"
+echo "========================================"

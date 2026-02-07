@@ -1,0 +1,11 @@
+# PGC Thermal Modeling - Python Dependencies
+#
+# Install:  pip install -r requirements.txt
+# Requires: Python >= 3.9
+
+CoolProp>=6.6.0
+numpy>=1.24
+matplotlib>=3.7
+scipy>=1.10
+pandas>=2.0
+tabulate>=0.9
