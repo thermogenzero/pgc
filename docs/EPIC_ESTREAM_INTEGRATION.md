@@ -66,10 +66,14 @@ This epic bridges:
 - [ ] Threshold monitoring circuits (temp_warning, low_voltage, battery_critical)
 - [ ] Bidirectional command queue with acknowledgment and TTL
 
-### Phase 3: Fleet Aggregation + Dashboard
+### Phase 3: Fleet Aggregation + Dashboard + HMI
 - [ ] `TZFleetAggregatorSC` circuit (total_power_kw, avg_battery_soc, sites_producing, sites_faulted)
 - [ ] Fleet dashboard integration (eStream Console widget)
 - [ ] Offline buffering layer (satellite/cellular store-and-forward)
+- [ ] Operator HMI — three-layer architecture (see `microgrid/docs/HMI-DESIGN.md`)
+  - [ ] Layer 1: Walk-up OLED display on Controller Node (SSD1306, 4 SPI pins)
+  - [ ] Layer 2: Web-based HMI (React + shadcn-ui on edge compute) — Thermogen Tech + O&G Operator views
+  - [ ] Layer 3: SCADA bridge validation (MODBUS TCP/OPC-UA via estream Industrial Gateway V2)
 
 ### Phase 4: PoVCR Carbon Credit Minting
 - [ ] Hardware attestation verification (ML-DSA-87 device certs)
@@ -120,6 +124,7 @@ At ~$50/tCO2e (current voluntary market): **$845K/year for 1,000 sites**
 - `ip/specs/REMOTE-BITSTREAM-UPDATE-DECISION.md` — Update governance design
 - `nexus-mppt-hdl/docs/ESTREAM_CONTRIBUTIONS.md` — HDL eStream integration notes
 - `node-hdl/` — Controller Node HDL
+- `microgrid/docs/HMI-DESIGN.md` — Operator HMI architecture (Thermogen tech + O&G operator + SCADA)
 
 ---
 
