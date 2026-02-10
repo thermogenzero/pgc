@@ -71,9 +71,10 @@ This epic bridges:
 - [ ] Fleet dashboard integration (eStream Console widget)
 - [ ] Offline buffering layer (satellite/cellular store-and-forward)
 - [ ] Operator HMI — three-layer architecture (see `microgrid/docs/HMI-DESIGN.md`)
-  - [ ] Layer 1: Walk-up OLED display on Controller Node (SSD1306, 4 SPI pins)
-  - [ ] Layer 2: Web-based HMI (React + shadcn-ui on edge compute) — Thermogen Tech + O&G Operator views
-  - [ ] Layer 3: SCADA bridge validation (MODBUS TCP/OPC-UA via estream Industrial Gateway V2)
+  - [ ] Layer 1: Walk-up display array on Controller Node (6x OLED+e-ink, shared SPI, 12 GPIO pins)
+  - [ ] Layer 2: TZ widget modules in estream-app (React Native) on rugged Android tablet
+  - [ ] Layer 3: MODBUS TCP server native in LIFCL-40 HDL (not on edge compute)
+  - [ ] Headless edge gateway: estream-kernel, WiFi AP, HAS offline buffer
 
 ### Phase 4: PoVCR Carbon Credit Minting
 - [ ] Hardware attestation verification (ML-DSA-87 device certs)
