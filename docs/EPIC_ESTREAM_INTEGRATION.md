@@ -87,6 +87,14 @@ This epic bridges:
 - [ ] ML-DSA-87 signed bitstream delivery via QUIC/satellite
 - [ ] Fleet-wide update orchestration with rollback
 
+### Phase 6: TZ-AI SLM Intelligence (see `microgrid/docs/TZ-AI-SPEC.md`)
+- [ ] AI-1: Corpus ingestion pipeline (TZ tenant config, sanitization, lex subscriptions)
+- [ ] AI-2: Fault predictor + predictive maintenance models (11 anomaly categories, cascade prediction)
+- [ ] AI-3: MPPT optimizer + energy dispatch models (duty cycle recommendations, dispatch scheduling)
+- [ ] AI-4: TZ HQ console widgets (7 fleet-level AI widgets)
+- [ ] AI-5: Carbon yield validator + fleet pattern correlator
+- [ ] AI-6: RLHF pipeline + operator feedback UI (experience weighting, accuracy tracking)
+
 ## Annual Carbon Credit Potential
 
 | Sites | Capacity Factor | CO2e per Site/Year | Total Annual Credits |
@@ -115,6 +123,7 @@ At ~$50/tCO2e (current voluntary market): **$845K/year for 1,000 sites**
 | Phase 3 | 3 weeks | Fleet aggregation + dashboard |
 | Phase 4 | 3 weeks | PoVCR carbon credit minting |
 | Phase 5 | 2 weeks | Remote bitstream governance integration |
+| Phase 6 | 14 weeks (~10 critical path) | TZ-AI SLM intelligence (6 models, 7 widgets, RLHF) |
 
 ## References
 
@@ -126,6 +135,8 @@ At ~$50/tCO2e (current voluntary market): **$845K/year for 1,000 sites**
 - `nexus-mppt-hdl/docs/ESTREAM_CONTRIBUTIONS.md` — HDL eStream integration notes
 - `node-hdl/` — Controller Node HDL
 - `microgrid/docs/HMI-DESIGN.md` — Operator HMI architecture (Thermogen tech + O&G operator + SCADA)
+- `microgrid/docs/TZ-AI-SPEC.md` — TZ-AI SLM intelligence specification (Phase 6)
+- `microgrid/docs/WIDGET-SPEC.md` — Console widget specifications (19 per-site + 7 HQ AI)
 
 ---
 
