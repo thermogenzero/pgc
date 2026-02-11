@@ -71,7 +71,7 @@ This epic bridges:
 - [ ] Fleet dashboard integration (eStream Console widget)
 - [ ] Offline buffering layer (satellite/cellular store-and-forward)
 - [ ] Operator HMI — three-layer architecture (see `microgrid/docs/HMI-DESIGN.md`)
-  - [ ] Layer 1: Walk-up display array on Controller Node (6x OLED+e-ink, shared SPI, 12 GPIO pins)
+  - [ ] Layer 1: Walk-up display array on Controller Node (9x OLED+e-ink 3×3 grid, shared SPI, 15 GPIO pins)
   - [ ] Layer 2: TZ widget modules in estream-app (React Native) on rugged Android tablet
   - [ ] Layer 3: MODBUS TCP server native in LIFCL-40 HDL (not on edge compute)
   - [ ] Headless edge gateway: estream-kernel, WiFi AP, HAS offline buffer
