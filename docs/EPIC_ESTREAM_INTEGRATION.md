@@ -74,7 +74,7 @@ This epic bridges:
   - [ ] Layer 1: Walk-up display array on Controller Node (9x OLED+e-ink 3×3 grid, shared SPI, 15 GPIO pins)
   - [ ] Layer 2: TZ widget modules in estream-app (React Native) on rugged Android tablet
   - [ ] Layer 3: MODBUS TCP server native in LIFCL-40 HDL (not on edge compute)
-  - [ ] Headless edge gateway: estream-kernel, WiFi AP, HAS offline buffer
+  - [ ] Controller Node network stack: estream-kernel (edge profile), WiFi AP, HAS offline buffer, satellite/cellular uplink
 
 ### Phase 4: PoVCR Carbon Credit Minting
 - [ ] Hardware attestation verification (ML-DSA-87 device certs)
