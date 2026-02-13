@@ -227,7 +227,7 @@ SynergyCarbon PoVCR Minter (cloud SmartCircuit, povc-carbon platform)
     │ Verifies witness quorum, validates energy claims
     │
     ▼
-L1 token mint (carbon credit NFT via SynergyCarbon)
+L2 token mint (carbon credit NFT via SynergyCarbon)
     │
     ▼
 tz.carbon.certificates.latest (lex topic)

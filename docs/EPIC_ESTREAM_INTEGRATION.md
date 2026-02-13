@@ -48,7 +48,7 @@ This epic bridges:
 | State machine execution | SmartCircuit state machine engine | Exists |
 | Aggregation circuits | Fleet aggregation framework | Needs building |
 | PoVC attestation | Proof of Verified Compute | Exists |
-| Carbon credit minting | PoVCR circuit → L1 token | Needs building |
+| Carbon credit minting | PoVCR circuit → L2 token | Needs building |
 | Governance | ML-DSA-87 signed commands | Exists |
 | VRF Scatter | Distributed replication | Exists |
 | Remote bitstream update | Governance-attested FPGA updates | Designed (see nexus-mppt-hdl) |
@@ -112,7 +112,7 @@ At ~$50/tCO2e (current voluntary market): **$845K/year for 1,000 sites**
 - [ ] State machine execution engine
 - [ ] PoVC framework (exists)
 - [ ] Governance lex (exists)
-- [ ] L1 bridge for carbon credit token minting
+- [ ] L2 bridge for carbon credit token minting
 
 ## Timeline (Estimate)
 
